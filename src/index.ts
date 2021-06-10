@@ -20,7 +20,7 @@ const server = new ApolloServer({
 	}
 });
 
-//@ts-ignore
+//@ts-ignore eslint-disable-line no-eval
 server.applyMiddleware({app});
 
 const httpServer = http.createServer(app);
