@@ -6,30 +6,30 @@ import { ApolloServer } from "apollo-server-express";
 import { makeExecutableSchema } from "graphql-tools";
 
 const schema = makeExecutableSchema({
-	typeDefs,
-	resolvers
-})
+    typeDefs,
+    resolvers,
+});
 
 const app = express();
 const port = 8080;
 
 const server = new ApolloServer({
-	schema,
-	subscriptions: {
-		path: "/subscriptions"
-	}
+    schema,
+    subscriptions: {
+        path: "/subscriptions",
+    },
 });
 
-//@ts-ignore eslint-disable-line no-eval
-server.applyMiddleware({app});
+//@ts-ignore
+server.applyMiddleware({ app });
 
 const httpServer = http.createServer(app);
 server.installSubscriptionHandlers(httpServer);
 
-app.get("/", (req,res) => {
-	res.send("Hello world!!!");
+app.get("/", (req, res) => {
+    res.send("Hello world!!!");
 });
 
 httpServer.listen(port, () => {
-	console.log(`Server is running on http://localhost:${port}`);
+    console.log(`Server is running on http://localhost:${port}`);
 });
