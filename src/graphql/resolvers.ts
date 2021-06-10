@@ -1,6 +1,19 @@
+import { PubSub } from "apollo-server-express";
+
+const pubsub = new PubSub();
+
 const resolvers = {
 	Query: {
-		hello: () => "Hello world!!!",
+		hello: () => {
+			pubsub.publish("HELLOABLE", "test");
+			return "Hello world!!!";
+		},
+	},
+	Subscription: {
+		helloable: {
+			subscribe: () => pubsub.asyncIterator(["HELLOABLE"]),
+			resolve: () => "test"
+		},
 	},
 };
 

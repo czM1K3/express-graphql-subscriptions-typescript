@@ -4,6 +4,10 @@ const typeDefs = gql`
 	type Query {
 		hello: String!
 	}
+
+	type Subscription {
+		helloable: String!
+	}
 `;
 
 export default typeDefs;
