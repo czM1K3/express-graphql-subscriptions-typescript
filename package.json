@@ -7,7 +7,7 @@
     "build": "tsc",
     "start": "node dist/index.js",
     "dev": "concurrently \"tsc -w\" \"nodemon dist/index.js\"",
-    "lint": "eslint ./src --ext ts --ext tsx --ext js",
+    "lint": "eslint ./src --ext ts --ext js",
     "format": "prettier --write ./src"
   },
   "author": "",
